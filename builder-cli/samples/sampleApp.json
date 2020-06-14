@@ -1,0 +1,45 @@
+{
+    "config": {
+        "BACKEND_ADDRESS":"https://reqres.in"
+    },
+    "pages":[
+        {
+            "name": "Categories",
+            "title": "Kategoriler",
+            "icon":"home",
+            "iconType": "AntDesign",
+            "subpages":[
+                {
+                    "type":"page",
+                    "name": "CategoriDetail",
+                    "title": "Kategori Detayı",
+                    "parentPageName":"Categories"
+                }
+            ],
+            "data": { 
+                "method":"GET",
+                "actionName":"listUsers",
+                "dataName":"users",
+                "dataLink": "/api/users?page=2"
+            }
+        },
+        {
+            "name": "Foods",
+            "title": "Yemekler",
+            "icon":"rest",
+            "iconType": "AntDesign"
+        },
+        {
+            "name": "Notifications",
+            "title": "Bildirimler",
+            "icon":"bells",
+            "iconType": "AntDesign"
+        },
+        {
+            "name": "Settings",
+            "title": "Ayarlar",
+            "icon":"setting",
+            "iconType": "AntDesign"
+        }
+    ]
+}

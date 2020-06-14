@@ -1,0 +1,12 @@
+import { combineReducers } from 'redux';
+<%#pages%>
+import <%name%> from '../pages/<%name%>/reducer';    
+<%/pages%>
+
+const rootReducer = combineReducers({
+    <%#pages%>
+    <%name%>: <%name%>,
+    <%/pages%>
+});
+  
+export default rootReducer;

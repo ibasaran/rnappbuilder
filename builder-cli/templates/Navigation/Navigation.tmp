@@ -1,0 +1,141 @@
+import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import styles from '../assets/styles/styles';
+import {Icon, Text} from 'native-base';
+import {View} from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+<%#pages%>
+import <%name%> from '../pages/<%name%>/<%name%>';
+<%#subpages%>
+import <%name%> from '../pages/<%parentPageName%>/<%name%>';
+<%/subpages%>
+<%/pages%>
+
+
+
+const Tab = createBottomTabNavigator();
+
+<%#pages%>
+const <%name%>Comp = createStackNavigator();
+
+function <%name%>Stack() {
+  return (
+    <<%name%>Comp.Navigator
+      initialRouteName="<%name%>"
+      screenOptions={{ gestureEnabled: false }}
+    >
+      <<%name%>Comp.Screen
+        name="<%name%>"
+        component={<%name%>}
+        initialParams={{ user: 'me' }}
+        options={{
+          headerTitle: <Text><%title%></Text>,
+        }}
+      />
+
+      <%#subpages%>
+      <<%parentPageName%>Comp.Screen
+        name="<%name%>"
+        component={<%name%>}
+        initialParams={{ user: 'me' }}
+        options={{
+          headerTitle: <Text><%title%></Text>,
+        }}
+      />
+      <%/subpages%>
+
+    </<%name%>Comp.Navigator>
+  );
+} 
+
+<%/pages%>
+
+function BottomTabs() {
+
+    return (
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+                
+                tabBarIcon: ({ focused, color, size }) => {
+                let iconName;
+                let typeName = "AntDesign";
+                let iconType ;
+                switch(route.name) {
+                <%#pages%>
+                  case '<%name%>':
+                    iconName = focused? '<%icon%>' : '<%icon%>';
+                    iconType = '<%iconType%>'
+                    break;
+                <%/pages%>
+                default:
+                  iconType = 'AntDesign'
+                    iconName = 'message1';
+                }
+                
+                return (
+                        <View style={styles.tabBarItemContainer}>
+                            <Icon type={iconType} name={iconName}
+                                style={[styles.tabBarIcon, focused && styles.tabBarIconFocused]}
+                            />
+                        </View>
+                    );
+                },
+                tabBarLabel: ({focused, color}) => {
+                    let tlabel = ""; 
+                    switch(route.name) {
+                    <%#pages%>
+                    
+                      case '<%name%>':
+                        tlabel = "<%title%>"
+                        break;
+                    <%/pages%>
+                    default:
+                        tlabel = "Default";
+                    }
+
+                    return <Text style={{fontSize:12}}>{tlabel}</Text>;
+                },
+                
+                
+            })}
+            tabBarOptions={{
+                activeTintColor: 'blue',
+                inactiveTintColor: 'black',
+                showLabel : true                
+
+            }}
+      
+      >
+        <%#pages%>
+            <Tab.Screen name="<%name%>" component={ <%name%>Stack } options={{ title: 'My home' }}/>
+        <%/pages%>
+      </Tab.Navigator>
+    );
+}
+
+
+const AppBaseStack = createStackNavigator();
+
+function BaseStack() {
+  return (
+    <AppBaseStack.Navigator
+      initialRouteName="App"
+      screenOptions={{
+        headerShown: false
+      }}
+    >
+      <AppBaseStack.Screen
+        name="App"
+        component={BottomTabs}
+        initialParams={{ user: 'me' }}
+      />
+    </AppBaseStack.Navigator>
+  );
+} 
+
+
+export default function App() {
+    return (
+        <BaseStack />
+    );
+}

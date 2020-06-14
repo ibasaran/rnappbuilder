@@ -1,0 +1,20 @@
+{
+  "name": "builder-cli",
+  "version": "0.1",
+  "description": "React native app generator",
+  "main": "rnbuilder.js",
+  "license": "MIT",
+  "preferGlobal": true,
+  "bin": {
+    "rnbuilder": "./rnbuilder.js"
+  },
+  "dependencies": {
+    "commander": "^5.1.0",
+    "fs-extra": "^9.0.0",
+    "mustache": "^4.0.1",
+    "ncp": "^2.0.0"
+  },
+  "peerDependencies": {
+    "commander": "^2.15.0"
+  }
+}

@@ -1,0 +1,18 @@
+import axios from 'axios';
+import EnvConfig from '../../config/env';
+
+export function <%data.actionName%>() {
+    return function (dispatch) {
+        var options = {
+            method: '<%data.method%>',
+            url: EnvConfig.BACKEND_ADDRESS + '<%& data.dataLink%>',
+            data: {},
+            json: true
+        };
+        axios(options).then(response => {
+            dispatch({ type: <%data.dataName%>, <%data.dataName%>: response.data });
+        }).catch(response => {
+            console.log(response);
+        });
+    }
+}

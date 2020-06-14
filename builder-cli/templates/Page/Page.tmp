@@ -1,0 +1,25 @@
+import React, { Component } from 'react';
+import { Container, Header, Content, Text, Button } from 'native-base';
+import {StatusBar} from 'react-native';
+
+
+export default class <%name%> extends Component {
+  render() {
+    return (
+      <Container >
+        <Content padder>
+            <Text>Merhaba <%name%></Text>
+            <Text>Alt Sayfaları </Text>
+            <%#subpages%>
+              <Button
+                title="<%name%>"
+                onPress={() => this.props.navigation.navigate('<%name%>')}
+              >
+              <Text><%name%></Text>
+              </Button>
+            <%/subpages%>
+        </Content>
+      </Container>
+    );
+  }
+}
