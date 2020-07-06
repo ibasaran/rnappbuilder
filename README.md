@@ -1,14 +1,22 @@
 # ReactNative_Generator
 
 
-baslamadan once builder-cli altına tmp adında klasör oluştur.
+This project aims to generate react native application ui from a json file. 
 
 
-Sample Run Command
+Before start go to builder-cli path and create tmp folder
 
-node rnbuilder.js -c -n demo -j /Users/ismail/dev/projects/ReactNative_Generator/builder-cli/samples/sampleApp.json
+mkdir tmp
 
 
-UPDATE
+SAMPLE CREATE COMMAND
 
-node rnbuilder.js -u -n demo -j /Users/ismail/dev/projects/ReactNative_Generator/builder-cli/samples/sampleApp.json
+node rnbuilder.js -c -n {{yourappname}} -j ./builder-cli/samples/sampleApp.json
+
+
+SAMPLE UPDATE COMMAND
+
+node rnbuilder.js -u -n {{yourappname}} -j ./builder-cli/samples/sampleApp.json
+
+
+
