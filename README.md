@@ -1,4 +1,4 @@
-# ReactNative_Generator
+# Rn Application Builder
 
 
 This project aims to generate react native application ui from a json file. 
