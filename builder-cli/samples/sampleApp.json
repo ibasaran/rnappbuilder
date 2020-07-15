@@ -21,7 +21,17 @@
                 "actionName":"listUsers",
                 "dataName":"users",
                 "dataLink": "/api/users?page=2"
-            }
+            },
+            "layout":[
+                {
+                    "name":"MyCardComp",
+                    "component":"Card",
+                    "datamap":{
+                        "dataName":"users",
+                        "image":"avatar"
+                    }
+                }
+            ]
         },
         {
             "name": "Foods",

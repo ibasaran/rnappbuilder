@@ -1,10 +1,30 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Text, Button } from 'native-base';
+import { Container, Header, Content, Text, Button,Row,Spinner } from 'native-base';
 import {StatusBar} from 'react-native';
+import { connect } from 'react-redux';
+import { <%data.actionName%> } from '../../store/actions';
+import {bindActionCreators} from 'redux';
+<%#layout%>
+import <%name%> from '../../components/<%name%>/<%name%>';
+<%/layout%>
 
+class <%name%> extends Component {
 
-export default class <%name%> extends Component {
+  componentDidMount() {
+    <%#data%>
+    this.props.<%data.actionName%>();
+    <%/data%>
+  }
+
   render() {
+
+    let data = null;
+<%#data%>
+    if (this.props.<%data.dataName%>) {
+      data = JSON.stringify(this.props.<%data.dataName%>);
+    }
+<%/data%>
+
     return (
       <Container >
         <Content padder>
@@ -18,8 +38,37 @@ export default class <%name%> extends Component {
               <Text><%name%></Text>
               </Button>
             <%/subpages%>
+
+            <%#layout%>
+            <Row>
+              {
+                 this.props.data ? (<<%name%> data={data} {...this.props}/>):(<Spinner color='blue' />)
+              }
+            </Row>
+            <%/layout%>
+
+
         </Content>
       </Container>
     );
   }
 }
+
+<%#data%>
+const mapStateToProps = state => {
+  return {
+    <%data.dataName%>: state.<%name%>.<%data.dataName%>,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({
+    <%data.actionName%>}, dispatch);
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(<%name%>);
+<%/data%>
+
+<%^data%>
+export default <%name%>;
+<%/data %>

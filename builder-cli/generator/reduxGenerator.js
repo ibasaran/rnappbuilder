@@ -40,31 +40,33 @@ exports.generate = (appBasePath, templateFolderPath, jsonData) => {
                                     const pageActionFileGeneratePath = path.join(appBasePath, '/src/pages/', pageJson.name,   'action.js');
                                     const pageReducerFileGeneratePath = path.join(appBasePath, '/src/pages/', pageJson.name,   'reducer.js');
                                     
-                                    fs.readFile(pageActionFileTemplatePath, function (err, data) {
-                                        if (err) console.log(err);
-                                        Mustache.tags = [ '<%', '%>' ];
-                                        var output = Mustache.render(data.toString(), pageJson);
-                                        fs.writeFile(pageActionFileGeneratePath, output, err => {
-                                            if(err) {
-                                                console.log('Error occured when writing page file!!!');
-                                                reject();
-                                            } else {
-                                                fs.readFile(pageReducerFileTemplatePath, function (err, data) {
-                                                    if (err) console.log(err);
-                                                    Mustache.tags = [ '<%', '%>' ];
-                                                    var output = Mustache.render(data.toString(), pageJson);
-                                                    fs.writeFile(pageReducerFileGeneratePath, output, err => {
-                                                        if(err) {
-                                                            console.log('Error occured when writing page file!!!');
-                                                            reject();
-                                                        } else {
-                                                            resolve();
-                                                        }
+                                    if (pageJson.data) {
+                                        fs.readFile(pageActionFileTemplatePath, function (err, data) {
+                                            if (err) console.log(err);
+                                            Mustache.tags = [ '<%', '%>' ];
+                                            var output = Mustache.render(data.toString(), pageJson);
+                                            fs.writeFile(pageActionFileGeneratePath, output, err => {
+                                                if(err) {
+                                                    console.log('Error occured when writing page file!!!');
+                                                    reject();
+                                                } else {
+                                                    fs.readFile(pageReducerFileTemplatePath, function (err, data) {
+                                                        if (err) console.log(err);
+                                                        Mustache.tags = [ '<%', '%>' ];
+                                                        var output = Mustache.render(data.toString(), pageJson);
+                                                        fs.writeFile(pageReducerFileGeneratePath, output, err => {
+                                                            if(err) {
+                                                                console.log('Error occured when writing page file!!!');
+                                                                reject();
+                                                            } else {
+                                                                resolve();
+                                                            }
+                                                        });
                                                     });
-                                                });
-                                            }
+                                                }
+                                            });
                                         });
-                                    });
+                                    }
                                 });
                             }
                         });

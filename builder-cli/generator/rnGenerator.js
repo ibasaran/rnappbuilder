@@ -6,6 +6,7 @@ var navGenerator = require('./navigationGenerator');
 var ncp = require('ncp').ncp;
 var pageGenerator = require('./pageGenerator.js');
 var reduxGenerator = require('./reduxGenerator');
+var componentGenerator = require('./componentGenerator');
 
 const installDependencies =   () => {
     return new Promise(  (resolve,reject) => {
@@ -91,6 +92,9 @@ const update = (appBasePath,jsonData,templatesPath) => {
             console.log('Successfully genrated navigation file.');
             reduxGenerator.generate(appBasePath,templatesPath, jsonData).then(() => {
                 console.log('Successfully genrated redux file.');
+                componentGenerator.generate(appBasePath,templatesPath, jsonData).then( () => {
+                    console.log('Component generated success');
+                }).catch( () => console.log('ERROR OCCURED GENERATING COMPONENT'));
             }).catch( () => console.log('ERROR OCCURED GENERATING REDUX'));
         }).catch( () => console.log('ERROR WHEN GENERATING NAVIGATION FILE!!!'));
     }).catch( () => console.log('ERROR WHEN GENERATING PAGE FILE!!!'));

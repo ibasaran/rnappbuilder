@@ -8,9 +8,6 @@ var Mustache = require('mustache');
 exports.generate = (appBasePath, templateFolderPath, jsonData) => {
 
     return new Promise( (resolve,reject) => {
-
-
-
         const pageFileTemplatePath = path.join(templateFolderPath,'/Page/Page.tmp');
         jsonData.pages.forEach( (pageJson, i ) => {
             const pageFolderPath = path.join(appBasePath, '/src/pages/', pageJson.name);

@@ -1,10 +1,14 @@
 <%#pages%>
+<%#data.actionName%>
 import { <%data.actionName%> } from '../pages/<%name%>/action.js';
+<%/data.actionName%>
 <%/pages%>
 
 
 export {
     <%#pages%>
-    <%data.actionName%>
+    <%#data.actionName%>
+        <%data.actionName%>,
+    <%/data.actionName%>
     <%/pages%>
 }

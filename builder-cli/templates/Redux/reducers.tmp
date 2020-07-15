@@ -1,11 +1,15 @@
 import { combineReducers } from 'redux';
 <%#pages%>
-import <%name%> from '../pages/<%name%>/reducer';    
+<%#data.actionName%>
+import <%name%> from '../pages/<%name%>/reducer';
+<%/data.actionName%>
 <%/pages%>
 
 const rootReducer = combineReducers({
     <%#pages%>
+    <%#data.actionName%>
     <%name%>: <%name%>,
+    <%/data.actionName%>
     <%/pages%>
 });
   
