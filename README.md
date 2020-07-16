@@ -11,12 +11,12 @@ mkdir tmp
 
 SAMPLE CREATE COMMAND
 
-node rnbuilder.js -c -n {{yourappname}} -j ./builder-cli/samples/sampleApp.json
+node rnbuilder.js -c -n {{yourappname}} -j ./samples/sampleApp.json
 
 
 SAMPLE UPDATE COMMAND
 
-node rnbuilder.js -u -n {{yourappname}} -j ./builder-cli/samples/sampleApp.json
+node rnbuilder.js -u -n {{yourappname}} -j ./samples/sampleApp.json
 
 
 
