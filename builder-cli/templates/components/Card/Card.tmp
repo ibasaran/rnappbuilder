@@ -4,11 +4,11 @@ import { Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from
 
 
 const CardComp = (props) => {
-  let cardItems = props.data.map((cardItem,index) => {
+  let cardItems = Object.keys(props.data).map((key) => {
       return (
         <Card>
             <CardItem cardBody>
-              <Image source={{uri: cardItem.<%image%>}} style={{height: 200, width: null, flex: 1}}/>
+              <Image source={{uri: props.data[key].<%image%>}} style={{height: 200, width: null, flex: 1}}/>
             </CardItem>
             <CardItem>
               <Left>

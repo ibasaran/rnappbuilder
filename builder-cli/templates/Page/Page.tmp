@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Text, Button,Row,Spinner } from 'native-base';
+import { Container, Header, Content, Text, Button,Row,Spinner,Col } from 'native-base';
 import {StatusBar} from 'react-native';
 import { connect } from 'react-redux';
 import { <%data.actionName%> } from '../../store/actions';
@@ -21,7 +21,7 @@ class <%name%> extends Component {
     let data = null;
 <%#data%>
     if (this.props.<%data.dataName%>) {
-      data = JSON.stringify(this.props.<%data.dataName%>);
+      data = this.props.<%data.dataName%>;
     }
 <%/data%>
 
@@ -41,9 +41,11 @@ class <%name%> extends Component {
 
             <%#layout%>
             <Row>
+              <Col>
               {
-                 this.props.data ? (<<%name%> data={data} {...this.props}/>):(<Spinner color='blue' />)
+                 data ? (<<%name%> data={data} {...this.props}/>):(<Spinner color='blue' />)
               }
+              </Col>
             </Row>
             <%/layout%>
 

@@ -10,7 +10,7 @@ export function <%data.actionName%>() {
             json: true
         };
         axios(options).then(response => {
-            dispatch({ type: <%data.dataName%>, <%data.dataName%>: response.data });
+            dispatch({ type: '<%data.dataName%>', <%data.dataName%>: response.data });
         }).catch(response => {
             console.log(response);
         });

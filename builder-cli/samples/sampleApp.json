@@ -27,7 +27,7 @@
                     "name":"MyCardComp",
                     "component":"Card",
                     "datamap":{
-                        "dataName":"users",
+                        "dataName":"users.data",
                         "image":"avatar"
                     }
                 }

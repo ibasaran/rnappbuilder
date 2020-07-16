@@ -1,7 +1,7 @@
 
 export default function (state={}, action) {
     switch (action.type) {
-        case <%data.dataName%>:
+        case '<%data.dataName%>':
             return {...state, <%data.dataName%>:action.<%data.dataName%>};
         default:
             return state;
